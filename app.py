@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
-app = Flask(__name__, static_folder='volunteer-app/build', static_url_path='')
+static_folder='volunteer-app/build'
+static_url_path=''
+app = Flask(__name__, static_folder, static_url_path )
 CORS(app)
 
 
-@app.route('/profile', methods="/GET")
+@app.route('/profile')
 @cross_origin()
 def my_profile():
     response_body = {
@@ -15,7 +17,7 @@ def my_profile():
     return response_body
 
 
-@app.route('/events', methods="/GET")
+@app.route('/events')
 @cross_origin()
 def events():
     response_body = {'events': [{
@@ -41,7 +43,7 @@ def events():
     ]}
     return response_body
 
-@app.route('/', methods="/GET")
+@app.route('/')
 @cross_origin()
 def serve(): 
     return send_from_directory(app.static_folder, 'index.html')
