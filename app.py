@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
-static_folder='volunteer-app/build'
-static_url_path=''
-app = Flask(__name__, static_folder, static_url_path )
+app = Flask(__name__, static_folder='volunteer-app/build', static_url_path='')
 CORS(app)
 
 
@@ -10,7 +8,7 @@ CORS(app)
 @cross_origin()
 def my_profile():
     response_body = {
-        "name": "Karen Le",
+        "name": "Karen",
         "about": "Hello! I'm a full stack developer that loves python and javascript",
         "image": "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
     }
@@ -45,5 +43,5 @@ def events():
 
 @app.route('/')
 @cross_origin()
-def serve(): 
+def serve():
     return send_from_directory(app.static_folder, 'index.html')
