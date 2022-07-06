@@ -4,7 +4,7 @@ app = Flask(__name__, static_folder='volunteer-app/build', static_url_path='')
 CORS(app)
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET'])
 @cross_origin()
 def my_profile():
     response_body = {
@@ -15,7 +15,7 @@ def my_profile():
     return response_body
 
 
-@app.route('/events')
+@app.route('/events', methods=['GET'])
 @cross_origin()
 def events():
     response_body = {'events': [{
@@ -41,7 +41,7 @@ def events():
     ]}
     return response_body
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 @cross_origin()
 def serve():
     return send_from_directory(app.static_folder, 'index.html')

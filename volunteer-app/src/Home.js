@@ -22,18 +22,15 @@ function Home() {
   const [eventData, setEventData] = useState(null);
 
   function getData() {
-    axios({
-      method: "GET",
-      url: "/profile",
-    })
-      .then((response) => {
-        const res = response.data;
-        setProfileData({
-          profile_name: res.name,
-          about_me: res.about,
-          image: res.image,
-        });
-      })
+    // axios({
+    //   method: "GET",
+    //   url: "/profile",
+    // })
+    // or
+    fetch("/profile").then((response) => {
+      if (response.status == 200){
+        return response.json()
+      }}).then(data => setProfileData(data))
       .catch((error) => {
         if (error.response) {
           console.log(error.response);
@@ -46,15 +43,10 @@ function Home() {
 
 
   function fetchData() {
-    axios({
-      method: "GET",
-      url: "/events",
-    })
-      .then((response) => {
-        const res = response.data.events;
-        // console.log(res)
-        setEventData(res);
-      })
+    fetch("/events").then((response) => {
+      if (response.status == 200){
+        return response.json()
+      }}).then(data => setEventData(data.events))
       .catch((error) => {
         if (error.response) {
           console.log(error.response);
@@ -302,8 +294,9 @@ function Home() {
               marginLeft: 70,
             }}
           >
-            {eventData.map((event) => (
+            {eventData.map((event,index) => (
               <div
+                key={index}
                 className="Event-card"
                 style={{
                   height: "270px",

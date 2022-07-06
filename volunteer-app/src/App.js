@@ -23,18 +23,10 @@ function App() {
   const [profileData, setProfileData] = useState(null);
 
   function getData() {
-    axios({
-      method: "GET",
-      url: "/profile",
-    })
-      .then((response) => {
-        const res = response.data;
-        setProfileData({
-          profile_name: res.name,
-          about_me: res.about,
-          image: res.image,
-        });
-      })
+    fetch("/profile").then((response) => {
+      if (response.status == 200){
+        return response.json()
+      }}).then(data => setProfileData(data))
       .catch((error) => {
         if (error.response) {
           console.log(error.response);
