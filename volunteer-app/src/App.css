@@ -1,0 +1,182 @@
+.App {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.431);
+}
+.wave-container {
+  background: white;
+}
+.wave-container > svg {
+  display: block;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  /* background-color: #282c34; */
+  height: 80.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  overflow: scroll;
+  padding: 20;
+}
+.Event-card:hover {
+  width: 270px;
+  height: 400;
+  background-color: white;
+  margin: 5;
+  padding: 10;
+  border-radius: 5;
+  cursor: pointer;
+}
+.App-link {
+  color: #61dafb;
+}
+.slideshow-container {
+  width: 70%;
+  height: 400px;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: relative;
+  width: auto;
+  margin-top: 100px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  justify-content: center;
+  display: none;
+}
+/* On hover; add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  position: absolute;
+  justify-content: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  /* color: #f2f2f2; */
+  font-size: 12px;
+  padding: 8px 12px;
+  margin: 0;
+  background-color: transparent;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal {
+  font-size: 13px;
+  background-color: #9cafb7e1;
+  margin: 0 auto;
+  padding: 30px;
+}
+.modal > .header {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: 5px;
+  top: 5px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+  margin: 5;
+}
+.mySlides {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  justify-content: center;
+  padding: 10;
+  margin: 0 auto;
+  height: 90%;
+}
+
+/* Next & previous buttons */
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
