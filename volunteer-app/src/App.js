@@ -21,6 +21,7 @@ function App() {
   const [formOpen, setFormOpen] = useState(false);
 
   const [profileData, setProfileData] = useState(null);
+  const [eventData, setEventData] = useState(null);
 
   function getData() {
     fetch("/profile").then((response) => {
@@ -35,8 +36,27 @@ function App() {
         }
       });
   }
+  function fetchData() {
+    fetch("/events").then((response) => {
+      if (response.status == 200){
+        return response.json()
+      }}).then(data => setEventData(data.events))
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+      console.log('here',eventData)
+  }
 
-  
+   // Fetch on events on load
+   useEffect(() => {
+    getData();
+    fetchData();
+    
+  }, []); 
   function openNav() {
     document.getElementById("mySidenav").style.width = "280px";
     document.getElementById("App").style.marginLeft = "280px";
@@ -66,10 +86,7 @@ function App() {
     }
   }
   
-  // Fetch on events on load
-  useEffect(() => {
-    getData();
-  }, []);
+
 
   return (
     <Router>
@@ -134,7 +151,7 @@ function App() {
       <div id="App">
       <Routes>
         <Route path="/profile" element={<Profile/>} />
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home prop={eventData}/>} />
       </Routes>
       </div>
     </Router>

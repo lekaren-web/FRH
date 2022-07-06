@@ -18,7 +18,8 @@ def my_profile():
 @app.route('/events', methods=['GET'])
 @cross_origin()
 def events():
-    response_body = {'events': [{
+    response_body = {'events': [
+    {
         "title": "Help Clean up your local park!",
         "description": "We are searching for a reliable and trustworthy volunteer to join our organization.",
         "image": "https://intermountainhealthcare.org/-/media/images/modules/blog/posts/2019/03/volunteering-is-good-for-you-and-your-kids.jpg?la=en&h=504&w=896&mw=896&hash=12B60E2046185023A7BB36AF203332C86DB664AE"
